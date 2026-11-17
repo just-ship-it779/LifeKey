@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifeKey — Your Medical Information, Always Within Reach</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCREEN 1 — HOMEPAGE  (first thing a visitor sees)
+     Shown when: no active session  AND  user hasn't clicked Log In / Get Started
+════════════════════════════════════════════════════════════════ -->
+<div id="home-screen" class="screen">
+
+  <!-- ── Landing nav ── -->
+  <header class="lnav" id="lnav">
+    <div class="lnav-inner">
+      <a href="#" class="lnav-brand" onclick="showScreen('home')">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11H5m7-7v14"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+        LifeKey
+      </a>
+      <nav class="lnav-links" id="lnav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+      </nav>
+      <div class="lnav-actions" id="lnav-actions">
+        <button class="btn btn-ghost" onclick="showAuthScreen('login')">Log In</button>
+        <button class="btn btn-primary btn-sm" onclick="showAuthScreen('signup')">Get Started</button>
+      </div>
+      <button class="hamburger" id="lnav-hamburger" onclick="toggleLandingMenu()" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+    <!-- Mobile dropdown -->
+    <div class="lnav-mobile hidden" id="lnav-mobile">
+      <a href="#features" onclick="toggleLandingMenu()">Features</a>
+      <a href="#how-it-works" onclick="toggleLandingMenu()">How It Works</a>
+      <button class="btn btn-ghost" onclick="showAuthScreen('login'); toggleLandingMenu()">Log In</button>
+      <button class="btn btn-primary" onclick="showAuthScreen('signup'); toggleLandingMenu()">Get Started</button>
+    </div>
+  </header>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-label">YOUR HEALTH INFORMATION, SIMPLIFIED</span>
+        <h1 class="hero-heading">Your health story.<br>Always within reach.</h1>
+        <p class="hero-desc">
+          Keep essential medical information and health reports together in one place.
+          Create a printable medical card and use its QR code to access your complete
+          medical record when needed.
+        </p>
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg" onclick="showAuthScreen('signup')">Get Started</button>
+          <button class="btn btn-outline btn-lg" onclick="showAuthScreen('login')">Log In</button>
+        </div>
+        <p class="hero-reassure">Simple to manage · Easy to access · Made for peace of mind</p>
+      </div>
+
+      <!-- Hero product mockup — pure HTML/CSS, no images needed -->
+      <div class="hero-visual" aria-hidden="true">
+
+        <!-- Outer scene: subtle background plane + depth shadow -->
+        <div class="hv-scene">
+
+          <!-- App window frame (mimics a browser/app chrome) -->
+          <div class="hv-app-frame">
+            <div class="hv-app-bar">
+              <span class="hv-dot hv-dot-r"></span>
+              <span class="hv-dot hv-dot-y"></span>
+              <span class="hv-dot hv-dot-g"></span>
+              <span class="hv-app-title">LifeKey · Medical Card</span>
+            </div>
+
+            <!-- The card sits inside the frame -->
+            <div class="hv-card-wrap">
+              <div class="hv-card">
+                <!-- Card top strip: logo + watermark text -->
+                <div class="hv-card-top">
+                  <div class="hv-card-brand">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 2v12M2 8h12"/><rect x="1" y="1" width="14" height="14" rx="2"/></svg>
+                    LifeKey
+                  </div>
+                  <div class="hv-card-chip">
+                    <!-- Decorative chip shape like a credit-card EMV chip -->
+                    <svg viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="28" height="22" rx="3" fill="rgba(255,255,255,0.18)"/>
+                      <rect x="10" y="0"  width="8" height="22" rx="0" fill="rgba(255,255,255,0.10)"/>
+                      <rect x="0"  y="7"  width="28" height="8" rx="0" fill="rgba(255,255,255,0.10)"/>
+                      <rect x="10" y="7"  width="8" height="8" rx="1" fill="rgba(255,255,255,0.22)"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Card middle: identity info -->
+                <div class="hv-card-mid">
+                  <div class="hv-card-name">Alex Johnson</div>
+                  <div class="hv-card-dob">DOB · 14 Aug 1992</div>
+                </div>
+
+                <!-- Card bottom: data row + QR -->
+                <div class="hv-card-bottom">
+                  <div class="hv-card-data">
+                    <div class="hv-pill blood">
+                      <span class="hv-pill-label">Blood</span>
+                      <span class="hv-pill-val">O+</span>
+                    </div>
+                    <div class="hv-pill allergy">
+                      <span class="hv-pill-label">Allergy</span>
+                      <span class="hv-pill-val">Penicillin</span>
+                    </div>
+                    <div class="hv-pill emergency">
+                      <span class="hv-pill-label">Emergency</span>
+                      <span class="hv-pill-val">Jamie · 98765 43210</span>
+                    </div>
+                  </div>
+                  <!-- QR illustration -->
+                  <div class="hv-qr">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="48" height="48" fill="rgba(255,255,255,0.95)" rx="4"/>
+                      <rect x="4"  y="4"  width="16" height="16" rx="1" fill="#0f766e"/>
+                      <rect x="6"  y="6"  width="12" height="12" rx="1" fill="white"/>
+                      <rect x="8"  y="8"  width="8"  height="8"  rx="1" fill="#0f766e"/>
+                      <rect x="28" y="4"  width="16" height="16" rx="1" fill="#0f766e"/>
+                      <rect x="30" y="6"  width="12" height="12" rx="1" fill="white"/>
+                      <rect x="32" y="8"  width="8"  height="8"  rx="1" fill="#0f766e"/>
+                      <rect x="4"  y="28" width="16" height="16" rx="1" fill="#0f766e"/>
+                      <rect x="6"  y="30" width="12" height="12" rx="1" fill="white"/>
+                      <rect x="8"  y="32" width="8"  height="8"  rx="1" fill="#0f766e"/>
+                      <rect x="24" y="24" width="4"  height="4"  fill="#0f766e"/>
+                      <rect x="30" y="24" width="4"  height="4"  fill="#0f766e"/>
+                      <rect x="36" y="24" width="8"  height="4"  fill="#0f766e"/>
+                      <rect x="24" y="30" width="8"  height="4"  fill="#0f766e"/>
+                      <rect x="34" y="30" width="4"  height="4"  fill="#0f766e"/>
+                      <rect x="40" y="30" width="4"  height="4"  fill="#0f766e"/>
+                      <rect x="24" y="36" width="4"  height="8"  fill="#0f766e"/>
+                      <rect x="30" y="38" width="8"  height="4"  fill="#0f766e"/>
+                      <rect x="40" y="36" width="4"  height="8"  fill="#0f766e"/>
+                    </svg>
+                    <p class="hv-scan-label">Scan to view record</p>
+                  </div>
+                </div>
+
+                <!-- Subtle card decorative watermark -->
+                <div class="hv-card-watermark">MEDICAL</div>
+              </div><!-- /hv-card -->
+            </div><!-- /hv-card-wrap -->
+
+            <!-- Mini report list below the card, inside the frame -->
+            <div class="hv-reports">
+              <div class="hv-reports-label">Recent Reports</div>
+              <div class="hv-report-row">
+                <div class="hv-report-dot dot-teal"></div>
+                <div class="hv-report-info">
+                  <span class="hv-report-name">Blood Test / Lab Report</span>
+                  <span class="hv-report-meta">City General Hospital · 15 Jan 2025</span>
+                </div>
+                <span class="hv-report-badge">PDF</span>
+              </div>
+              <div class="hv-report-row">
+                <div class="hv-report-dot dot-navy"></div>
+                <div class="hv-report-info">
+                  <span class="hv-report-name">X-Ray</span>
+                  <span class="hv-report-meta">Apollo Diagnostics · 3 Mar 2025</span>
+                </div>
+                <span class="hv-report-badge">PNG</span>
+              </div>
+              <div class="hv-report-row">
+                <div class="hv-report-dot dot-teal"></div>
+                <div class="hv-report-info">
+                  <span class="hv-report-name">Prescription</span>
+                  <span class="hv-report-meta">Dr. Priya Sharma · 10 Apr 2025</span>
+                </div>
+                <span class="hv-report-badge">PDF</span>
+              </div>
+            </div><!-- /hv-reports -->
+          </div><!-- /hv-app-frame -->
+
+          <!-- Floating badge: "QR Scanned" notification -->
+          <div class="hv-badge hv-badge-qr">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm2 2V5h1v1H5zM3 13a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1v-3zm2 2v-1h1v1H5zM13 3a1 1 0 00-1 1v3a1 1 0 001 1h3a1 1 0 001-1V4a1 1 0 00-1-1h-3zm1 2v1h1V5h-1z" clip-rule="evenodd"/></svg>
+            <div>
+              <p class="hv-badge-title">QR Scanned</p>
+              <p class="hv-badge-sub">Record accessed</p>
+            </div>
+          </div>
+
+          <!-- Floating badge: "Profile Complete" -->
+          <div class="hv-badge hv-badge-profile">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            <div>
+              <p class="hv-badge-title">Profile Complete</p>
+              <p class="hv-badge-sub">Card ready to print</p>
+            </div>
+          </div>
+
+        </div><!-- /hv-scene -->
+      </div><!-- /hero-visual -->
+    </div><!-- /hero-inner -->
+  </section>
+
+  <!-- ── Features ── -->
+  <section class="features-section" id="features">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-eyebrow">WHAT YOU GET</span>
+        <h2>Everything you need in one place</h2>
+        <p>LifeKey gives you three core tools designed to work together seamlessly.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrap teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <h3>Medical Information Card</h3>
+          <p>Create a compact, printable wallet card containing your key medical details and an emergency QR code — ready when you need it most.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap navy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+          <h3>Digital Report Vault</h3>
+          <p>Upload and organise medical reports, prescriptions, and scans in one secure place — accessible from any device at any time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h.01M14 18h.01M18 14h.01M18 18h.01"/></svg>
+          </div>
+          <h3>Quick QR Access</h3>
+          <p>Scan the card's QR code to instantly open the full medical record, including all uploaded reports — no login needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works ── -->
+  <section class="hiw-section" id="how-it-works">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-eyebrow">SIMPLE STEPS</span>
+        <h2>Up and running in minutes</h2>
+      </div>
+      <div class="hiw-steps">
+        <div class="hiw-step">
+          <div class="step-number">1</div>
+          <h3>Create your account</h3>
+          <p>Sign up with your email and fill in your medical profile — name, blood group, allergies, conditions, and emergency contact.</p>
+        </div>
+        <div class="hiw-connector" aria-hidden="true">
+          <svg viewBox="0 0 40 20" fill="none"><path d="M0 10 H40" stroke="#d1d5db" stroke-width="2" stroke-dasharray="4 3"/></svg>
+        </div>
+        <div class="hiw-step">
+          <div class="step-number">2</div>
+          <h3>Generate your card</h3>
+          <p>Preview your wallet-sized medical card with a live QR code. Print it or save it as a PDF. Upload reports to your vault.</p>
+        </div>
+        <div class="hiw-connector" aria-hidden="true">
+          <svg viewBox="0 0 40 20" fill="none"><path d="M0 10 H40" stroke="#d1d5db" stroke-width="2" stroke-dasharray="4 3"/></svg>
+        </div>
+        <div class="hiw-step">
+          <div class="step-number">3</div>
+          <h3>Scan and share</h3>
+          <p>Scan the QR code with any phone camera to open the full medical record — profile, conditions, medications, and reports — instantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Final CTA ── -->
+  <section class="cta-section">
+    <div class="section-inner cta-inner">
+      <h2>Ready to create your LifeKey?</h2>
+      <p>It only takes a few minutes to set up your medical profile and generate your card.</p>
+      <button class="btn btn-primary btn-lg" onclick="showAuthScreen('signup')">Create Your LifeKey</button>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="section-inner footer-inner">
+      <div class="footer-brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11H5m7-7v14"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+        <strong>LifeKey</strong>
+      </div>
+      <p class="footer-desc">Your medical information, always within reach.</p>
+    </div>
+  </footer>
+
+</div><!-- /home-screen -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCREEN 2 — AUTH SCREEN  (login / signup forms)
+     Shown when: user clicks Log In or Get Started
+════════════════════════════════════════════════════════════════ -->
+<div id="auth-screen" class="screen hidden">
+  <div class="auth-layout">
+
+    <!-- Left panel — branding / welcome -->
+    <div class="auth-panel-left">
+      <button class="auth-back-btn" onclick="showScreen('home')">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        Back to home
+      </button>
+      <div class="auth-brand">
+        <svg class="auth-brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11H5m7-7v14"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+        <span>LifeKey</span>
+      </div>
+      <h2 class="auth-panel-heading">Your medical identity,<br>always with you.</h2>
+      <ul class="auth-perks">
+        <li>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Printable wallet-sized medical card
+        </li>
+        <li>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Upload and organise medical reports
+        </li>
+        <li>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Instant QR access to medical record
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right panel — the actual forms -->
+    <div class="auth-panel-right">
+      <div class="auth-card">
+
+        <!-- Tab switcher — preserved IDs and onclick handlers -->
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tab-login" onclick="showTab('login')">Log In</button>
+          <button class="auth-tab" id="tab-signup" onclick="showTab('signup')">Sign Up</button>
+        </div>
+
+        <!-- LOGIN FORM — all IDs and onsubmit preserved -->
+        <form id="login-form" class="auth-form" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="login-email">Email address</label>
+            <input type="email" id="login-email" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="Your password" autocomplete="current-password" required />
+          </div>
+          <div id="login-message" class="form-message"></div>
+          <button type="submit" class="btn btn-primary btn-full" id="login-btn">Log In</button>
+          <p class="auth-switch">Don't have an account? <button type="button" class="link-btn" onclick="showTab('signup')">Sign up free</button></p>
+        </form>
+
+        <!-- SIGN UP FORM — all IDs and onsubmit preserved -->
+        <form id="signup-form" class="auth-form hidden" onsubmit="handleSignup(event)">
+          <div class="form-group">
+            <label for="signup-email">Email address</label>
+            <input type="email" id="signup-email" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" placeholder="At least 6 characters" minlength="6" autocomplete="new-password" required />
+          </div>
+          <div id="signup-message" class="form-message"></div>
+          <button type="submit" class="btn btn-primary btn-full" id="signup-btn">Create Account</button>
+          <p class="auth-switch">Already have an account? <button type="button" class="link-btn" onclick="showTab('login')">Log in</button></p>
+        </form>
+
+      </div><!-- /auth-card -->
+    </div><!-- /auth-panel-right -->
+
+  </div><!-- /auth-layout -->
+</div><!-- /auth-screen -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCREEN 3 — APP SHELL  (shown when user IS logged in)
+════════════════════════════════════════════════════════════════ -->
+<div id="app-screen" class="screen hidden">
+
+  <!-- ── Top navigation bar ── -->
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <div class="nav-brand" onclick="showSection('dashboard')" style="cursor:pointer">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11H5m7-7v14"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+        <span class="logo-text">LifeKey</span>
+      </div>
+
+      <!-- Desktop nav links — preserved onclick handlers -->
+      <ul class="nav-links" id="nav-links">
+        <li><button class="nav-btn active" data-section="dashboard" onclick="showSection('dashboard')">Dashboard</button></li>
+        <li><button class="nav-btn" data-section="profile" onclick="showSection('profile')">My Profile</button></li>
+        <li><button class="nav-btn" data-section="card" onclick="showSection('card')">Medical Card</button></li>
+        <li><button class="nav-btn" data-section="reports" onclick="showSection('reports')">Reports</button></li>
+      </ul>
+
+      <!-- User info + logout — preserved -->
+      <div class="nav-user">
+        <div class="nav-user-avatar" id="nav-user-avatar">U</div>
+        <span id="nav-user-email" class="user-email"></span>
+        <button class="btn btn-ghost btn-sm" onclick="handleLogout()">Log Out</button>
+      </div>
+
+      <!-- Mobile hamburger — preserved -->
+      <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile dropdown menu — preserved onclick handlers -->
+  <div id="mobile-menu" class="mobile-menu hidden">
+    <button onclick="showSection('dashboard'); toggleMobileMenu()">Dashboard</button>
+    <button onclick="showSection('profile'); toggleMobileMenu()">My Profile</button>
+    <button onclick="showSection('card'); toggleMobileMenu()">Medical Card</button>
+    <button onclick="showSection('reports'); toggleMobileMenu()">Reports</button>
+    <button onclick="handleLogout()">Log Out</button>
+  </div>
+
+  <!-- ── Main content area ── -->
+  <main class="main-content">
+
+    <!-- ── SECTION: Dashboard ── -->
+    <section id="section-dashboard" class="app-section">
+
+      <div class="dash-hero">
+        <div>
+          <h1 class="section-title">Welcome back<span id="dash-name"></span></h1>
+          <p class="section-sub">Here's an overview of your LifeKey record.</p>
+        </div>
+        <div class="dash-hero-actions">
+          <button class="btn btn-primary" onclick="showSection('card')">
+            <svg viewBox="0 0 20 20" fill="currentColor"><rect x="1" y="4" width="18" height="12" rx="2"/><line x1="1" y1="9" x2="19" y2="9"/></svg>
+            View Medical Card
+          </button>
+        </div>
+      </div>
+
+      <!-- Summary cards — IDs preserved -->
+      <div class="stat-grid">
+        <div class="stat-card" onclick="showSection('profile')">
+          <div class="stat-icon-wrap teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">Profile</div>
+            <div class="stat-value" id="dash-profile-status">Not set up</div>
+          </div>
+          <div class="stat-arrow">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+        </div>
+        <div class="stat-card" onclick="showSection('reports')">
+          <div class="stat-icon-wrap navy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">Reports</div>
+            <div class="stat-value" id="dash-report-count">0 uploaded</div>
+          </div>
+          <div class="stat-arrow">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+        </div>
+        <div class="stat-card" onclick="showSection('card')">
+          <div class="stat-icon-wrap teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">Medical Card</div>
+            <div class="stat-value" id="dash-card-status">Generate card</div>
+          </div>
+          <div class="stat-arrow">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick actions -->
+      <div class="quick-actions">
+        <h2 class="sub-heading">Quick Actions</h2>
+        <div class="qa-grid">
+          <button class="qa-btn" onclick="showSection('profile')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Edit Profile
+          </button>
+          <button class="qa-btn" onclick="showSection('card')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            View Card
+          </button>
+          <button class="qa-btn" onclick="showSection('reports')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload Report
+          </button>
+        </div>
+      </div>
+
+
+    </section><!-- /section-dashboard -->
+
+    <!-- ── SECTION: Medical Profile ── -->
+    <section id="section-profile" class="app-section hidden">
+      <h1 class="section-title">Medical Profile</h1>
+      <p class="section-sub">This information will appear on your medical card and QR record page.</p>
+
+      <form id="profile-form" class="card-form" onsubmit="handleProfileSave(event)">
+
+        <fieldset class="form-fieldset">
+          <legend class="fieldset-legend">Personal Details</legend>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p-name">Full Name <span class="required">*</span></label>
+              <input type="text" id="p-name" placeholder="e.g. Alex Johnson" required />
+            </div>
+            <div class="form-group">
+              <label for="p-dob">Date of Birth</label>
+              <input type="date" id="p-dob" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+          <legend class="fieldset-legend">Medical Information</legend>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p-blood">Blood Group</label>
+              <select id="p-blood">
+                <option value="Unknown">Unknown</option>
+                <option value="A+">A+</option>
+                <option value="A-">A−</option>
+                <option value="B+">B+</option>
+                <option value="B-">B−</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB−</option>
+                <option value="O+">O+</option>
+                <option value="O-">O−</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="p-allergies">Allergies</label>
+              <input type="text" id="p-allergies" placeholder="None known / Penicillin, Peanuts …" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="p-conditions">Medical Conditions</label>
+            <textarea id="p-conditions" rows="2" placeholder="e.g. Type 2 Diabetes, Hypertension — or leave blank"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="p-medications">Current Medications</label>
+            <textarea id="p-medications" rows="2" placeholder="e.g. Metformin 500mg, Lisinopril 10mg — or leave blank"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+          <legend class="fieldset-legend">Emergency Contact</legend>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p-ec-name">Contact Name</label>
+              <input type="text" id="p-ec-name" placeholder="e.g. Jamie Johnson" />
+            </div>
+            <div class="form-group">
+              <label for="p-ec-phone">Contact Phone</label>
+              <input type="tel" id="p-ec-phone" placeholder="e.g. +91 98765 43210" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+          <legend class="fieldset-legend">Additional Notes</legend>
+          <div class="form-group">
+            <label for="p-notes">Medical Notes</label>
+            <textarea id="p-notes" rows="3" placeholder="Any other information useful in an emergency …"></textarea>
+          </div>
+        </fieldset>
+
+        <div id="profile-message" class="form-message"></div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="profile-save-btn">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M7.629 17.357c-.3 0-.6-.114-.828-.343L2.343 12.57a1.17 1.17 0 010-1.657 1.17 1.17 0 011.656 0l3.63 3.629L16.001 4.357a1.17 1.17 0 011.656 0 1.17 1.17 0 010 1.657L8.457 17.014a1.16 1.16 0 01-.828.343z"/></svg>
+            Save Profile
+          </button>
+        </div>
+
+      </form>
+    </section><!-- /section-profile -->
+
+    <!-- ── SECTION: Medical Card ── -->
+    <section id="section-card" class="app-section hidden">
+      <h1 class="section-title">Medical Card</h1>
+      <p class="section-sub">Preview both sides of your foldable card. Print on A4 landscape to get a wallet-sized card.</p>
+
+      <!-- Empty state: shown when no profile saved yet -->
+      <div id="card-no-profile" class="empty-state hidden">
+        <div class="empty-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <h3>No profile yet</h3>
+        <p>Save your medical profile first before generating a card.</p>
+        <button class="btn btn-primary" onclick="showSection('profile')">Go to Profile</button>
+      </div>
+
+      <!-- Card preview + print controls: shown when profile exists -->
+      <div id="card-preview-wrapper" class="hidden">
+
+        <!-- ── On-screen side-by-side preview ── -->
+        <div class="cc-preview-row no-print">
+          <!-- Front face preview -->
+          <div class="cc-preview-panel">
+            <div class="cc-preview-label">Front</div>
+            <div class="cc-card cc-front" id="cc-front-screen">
+              <!-- Decorative corner arc (mirrors the back ring motif) -->
+              <div class="cc-front-arc"></div>
+              <div class="cc-front-top">
+                <div class="cc-brand">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2v12M2 8h12"/><rect x="1" y="1" width="14" height="14" rx="2"/></svg>
+                  LifeKey
+                </div>
+                <span class="cc-type-label">MEDICAL CARD</span>
+              </div>
+              <div class="cc-front-mid">
+                <div class="cc-name" id="mc-name">—</div>
+                <div class="cc-dob" id="mc-dob"></div>
+              </div>
+              <div class="cc-front-bottom">
+                <div class="cc-info-col">
+                  <div class="cc-row" id="cc-blood-row">
+                    <span class="cc-k">Blood Group</span>
+                    <span class="cc-blood-val" id="mc-blood">—</span>
+                  </div>
+                  <div class="cc-row" id="cc-allergy-row">
+                    <span class="cc-k">Allergies</span>
+                    <span class="cc-v" id="mc-allergies"></span>
+                  </div>
+                  <div class="cc-row" id="cc-conditions-row">
+                    <span class="cc-k">Conditions</span>
+                    <span class="cc-v" id="mc-conditions"></span>
+                  </div>
+                  <div class="cc-row" id="cc-emergency-row">
+                    <span class="cc-k">Emergency</span>
+                    <span class="cc-v" id="mc-emergency"></span>
+                  </div>
+                </div>
+                <div class="cc-qr-col">
+                  <div id="mc-qr"></div>
+                  <p class="cc-scan-hint">Scan for<br>medical details</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Back face preview -->
+          <div class="cc-preview-panel">
+            <div class="cc-preview-label">Back</div>
+            <div class="cc-card cc-back">
+              <!-- Decorative sage rings -->
+              <div class="cc-back-ring cc-ring-1"></div>
+              <div class="cc-back-ring cc-ring-2"></div>
+              <div class="cc-back-content">
+                <div class="cc-back-brand">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2v12M2 8h12"/><rect x="1" y="1" width="14" height="14" rx="2"/></svg>
+                  LifeKey
+                </div>
+                <p class="cc-back-tagline">Your health.<br>Always within reach.</p>
+                <p class="cc-back-found">If found, please contact<br>the cardholder's emergency contact.</p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /cc-preview-row -->
+
+        <!-- ── Print instructions + button ── -->
+        <div class="cc-print-instructions no-print">
+          <div class="cc-instructions-header">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd"/></svg>
+            <h3>How to print your foldable card</h3>
+          </div>
+          <ol>
+            <li>Click <strong>Print / Save as PDF</strong> below.</li>
+            <li>Set orientation to <strong>Landscape</strong> and paper size to <strong>A4</strong>.</li>
+            <li>Set scale to <strong>100% / Actual Size</strong> — do not enable "Fit to page".</li>
+            <li>Turn on <strong>Background graphics</strong> so card colours print correctly.</li>
+            <li>Cut around the card outline, then <strong>fold along the centre line</strong> so the two faces become the front and back of one card.</li>
+          </ol>
+          <button class="btn btn-primary" onclick="printCard()">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd"/></svg>
+            Print / Save as PDF
+          </button>
+        </div>
+
+      </div><!-- /card-preview-wrapper -->
+  
+      </section><!-- /section-card -->
+  
+      <!-- ── SECTION: Reports ── -->
+    <section id="section-reports" class="app-section hidden">
+      <h1 class="section-title">Medical Reports</h1>
+      <p class="section-sub">Upload PDFs or images of your reports. These will appear on your QR record page.</p>
+
+      <!-- Upload form -->
+      <div class="card-form">
+        <h2 class="sub-heading">Upload a Report</h2>
+        <form id="report-form" onsubmit="handleReportUpload(event)">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="r-type">Report Type <span class="required">*</span></label>
+              <select id="r-type" required>
+                <option value="">— Select type —</option>
+                <option value="Blood Test / Lab Report">Blood Test / Lab Report</option>
+                <option value="General Checkup">General Checkup</option>
+                <option value="X-Ray">X-Ray</option>
+                <option value="MRI / CT Scan">MRI / CT Scan</option>
+                <option value="Prescription">Prescription</option>
+                <option value="Discharge Summary">Discharge Summary</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="r-date">Report Date <span class="required">*</span></label>
+              <input type="date" id="r-date" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="r-hospital">Hospital / Laboratory <span class="required">*</span></label>
+            <input type="text" id="r-hospital" placeholder="e.g. City General Hospital" required />
+          </div>
+
+          <div class="form-group">
+            <label for="r-file">File (PDF, JPG, PNG — max 10 MB) <span class="required">*</span></label>
+            <div class="file-drop-zone" id="file-drop-zone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <p>Click to select a file</p>
+              <span>PDF · JPG · PNG · Max 10 MB</span>
+              <input type="file" id="r-file" accept=".pdf,.jpg,.jpeg,.png" required />
+            </div>
+            <div id="file-chosen" class="file-chosen hidden"></div>
+          </div>
+
+          <div id="upload-message" class="form-message"></div>
+          <div id="upload-progress" class="progress-bar hidden"><div id="upload-bar"></div></div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="upload-btn">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+              Upload Report
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Report list -->
+      <div class="reports-list-header">
+        <h2 class="sub-heading">Uploaded Reports</h2>
+        <div class="sort-controls">
+          <label for="sort-reports">Sort by</label>
+          <select id="sort-reports" onchange="renderReports()">
+            <option value="date-desc">Newest first</option>
+            <option value="date-asc">Oldest first</option>
+            <option value="hospital-asc">Hospital A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="reports-container">
+        <div class="empty-state" id="reports-empty">
+          <div class="empty-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>No reports yet</h3>
+          <p>Use the form above to upload your first report.</p>
+        </div>
+      </div>
+
+    </section><!-- /section-reports -->
+
+  </main><!-- /main-content -->
+</div><!-- /app-screen -->
+
+<!--
+  PRINT SHEET — direct child of <body> so @media print can show it
+  even when #app-screen is hidden.  The card section above contains
+  a duplicate for reference only; this is the one that actually prints.
+-->
+<div id="print-sheet" class="print-sheet-hidden">
+  <div class="ps-page">
+    <div class="ps-cut-area">
+
+      <!-- Front panel -->
+      <div class="ps-panel ps-front">
+        <div class="cc-card cc-front">
+          <div class="cc-front-arc"></div>
+          <div class="cc-front-top">
+            <div class="cc-brand">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2v12M2 8h12"/><rect x="1" y="1" width="14" height="14" rx="2"/></svg>
+              LifeKey
+            </div>
+            <span class="cc-type-label">MEDICAL CARD</span>
+          </div>
+          <div class="cc-front-mid">
+            <div class="cc-name" id="mc-name-print">—</div>
+            <div class="cc-dob" id="mc-dob-print"></div>
+          </div>
+          <div class="cc-front-bottom">
+            <div class="cc-info-col">
+              <div class="cc-row">
+                <span class="cc-k">Blood Group</span>
+                <span class="cc-blood-val" id="mc-blood-print">—</span>
+              </div>
+              <div class="cc-row" id="cc-allergy-row-print">
+                <span class="cc-k">Allergies</span>
+                <span class="cc-v" id="mc-allergies-print"></span>
+              </div>
+              <div class="cc-row" id="cc-conditions-row-print">
+                <span class="cc-k">Conditions</span>
+                <span class="cc-v" id="mc-conditions-print"></span>
+              </div>
+              <div class="cc-row" id="cc-emergency-row-print">
+                <span class="cc-k">Emergency</span>
+                <span class="cc-v" id="mc-emergency-print"></span>
+              </div>
+            </div>
+            <div class="cc-qr-col">
+              <div id="mc-qr-print"></div>
+              <p class="cc-scan-hint">Scan for<br>medical details</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- /ps-front -->
+
+      <!-- Fold guide -->
+      <div class="ps-fold-guide">
+        <div class="ps-fold-line"></div>
+        <span class="ps-fold-label">FOLD</span>
+      </div>
+
+      <!-- Back panel -->
+      <div class="ps-panel ps-back">
+        <div class="cc-card cc-back">
+          <div class="cc-back-ring cc-ring-1"></div>
+          <div class="cc-back-ring cc-ring-2"></div>
+          <div class="cc-back-content">
+            <div class="cc-back-brand">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2v12M2 8h12"/><rect x="1" y="1" width="14" height="14" rx="2"/></svg>
+              LifeKey
+            </div>
+            <p class="cc-back-tagline">Your health.<br>Always within reach.</p>
+            <p class="cc-back-found">If found, please contact<br>the cardholder's emergency contact.</p>
+          </div>
+        </div>
+      </div><!-- /ps-back -->
+
+    </div><!-- /ps-cut-area -->
+  </div><!-- /ps-page -->
+</div><!-- /print-sheet -->
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCRIPTS — same order as before: CDN libs → config → supabase → app
+════════════════════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="supabase.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

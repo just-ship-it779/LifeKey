@@ -1,0 +1,4 @@
+# LifeKey is a browser-based HTML/CSS/JavaScript application.
+# Python packages are not required to run the deployed website.
+# This file is included because the project submission requests a requirements.txt.
+# If a Python backend or Python utility is added later, list its pip dependencies here.
